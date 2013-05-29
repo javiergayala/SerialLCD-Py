@@ -10,9 +10,15 @@ import time
 serialDev = '/dev/ttyAMA0'
 
 # Define special characters to use with the LCD Display
+# First 4 characters represent the command (\xFE = Decimal 254 in Hex)
+# Second 4 characters represent the value to set (\x9D = Dec. 157 in Hex)
 clear = '\xFE\x01'  # Clear the screen
+backOn = '\x7C\x9D'  # Turn backlight brightness to 100%
+backOn = '\x7C\x80'  # Turn backlight brightness to 0%
 line1 = '\xFE\x80'  # Place cursor at beginning of line 1
 line2 = '\xFE\xC0'  # Place cursor at beginning of line 2
+# The following are not commands, but simply characters and therefore only
+# contain 1 Hex value instead of 2
 square = '\xFF'  # Create character that looks like a filled in block
 invader = '\xFC'  # Create char. that looks like space invader
 degree = '\xDF'  # Create char. for degree symbol
